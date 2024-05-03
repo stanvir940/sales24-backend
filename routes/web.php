@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,6 @@ Route::controller(ProductController::class)->group(function(){
     Route::put('products/{product}','update')->name('products.update');
     Route::delete('products/{product}','destroy')->name('products.destroy');
 });
+
+Route::match(['GET','POST'],'/registration/create',[ExampleController::class,'create'])->name('reg.create');
+Route::match(['GET','POST'],'/registration',[ExampleController::class,'store'])->name('reg.store');
