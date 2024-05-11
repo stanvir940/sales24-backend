@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductShow;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,3 +21,5 @@ Route::controller(ProductController::class)->group(function(){
 
 Route::match(['GET','POST'],'/registration/create',[ExampleController::class,'create'])->name('reg.create');
 Route::match(['GET','POST'],'/registration',[ExampleController::class,'store'])->name('reg.store');
+
+Route::get('/api/products', [ProductShow::class, 'index']);

@@ -46,6 +46,13 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="" class="form-label">Category</label>
+                                <input value="{{ old('category',$product->category)}}" type="text" class="@error('name') is-invalid @enderror form-control form-control-lg" placeholder="Category" name="category">
+                                @error('category')
+                                    <p class="invalid-feedback">{{ $message }} </p>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Price</label>
                                 <input value="{{ old('price',$product->price)}}" type="text" class="@error('name') is-invalid @enderror form-control form-control-lg" placeholder="Price" name="price">
                                 @error('price')

@@ -45,6 +45,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->sku = $request->sku;
+        $product->category = $request->category;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->quantity = $request->quantity;
@@ -98,6 +99,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->sku = $request->sku;
         $product->price = $request->price;
+        $product->category = $request->category;
         $product->description = $request->description;
         $product->quantity = $request->quantity;
         $product->save();

@@ -56,6 +56,10 @@
                                 <input type="text" class="form-control form-control-lg" placeholder="Description" name="description">
                             </div>
                             <div class="mb-3">
+                                <label for="" class="form-label">Category</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Category" name="category">
+                            </div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Quantity</label>
                                 <textarea value="{{ old('quantity')}}" type="number" class="@error('name') is-invalid @enderror form-control form-control-lg" placeholder="quantity" name="quantity"></textarea>
                                 @error('quantity')
