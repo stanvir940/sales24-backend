@@ -14,15 +14,29 @@ class ProductShow extends Controller
 
         // Filter data by category
         // $query = Product::where('name', 'Panjabi');
-        $category = $request->query('category');
+
+
+        // $category = $request->query('category');
         $query = Product::query();
 
         // Apply filters based on query parameters
-        if ($category) {
+
+        // if ($category) {
+        //     $query->where('category', $category);
+        // }
+        if ($category = $request->query('category')) {
             $query->where('category', $category);
         }
+
+
+        // Search functionality
+        if ($search = $request->query('search')) {
+            $query->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('description', 'LIKE', "%{$search}%");
+        }
+
         // Execute the query
-        $products = $query->get();
+        // $products = $query->get();
 
         // Paginate the results
         $products = $query->paginate($perPage);
