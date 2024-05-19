@@ -23,3 +23,4 @@ Route::match(['GET','POST'],'/registration/create',[ExampleController::class,'cr
 Route::match(['GET','POST'],'/registration',[ExampleController::class,'store'])->name('reg.store');
 
 Route::get('/api/products', [ProductShow::class, 'index']);
+Route::get('/api/product/{id}', [ProductShow::class, 'show']);
