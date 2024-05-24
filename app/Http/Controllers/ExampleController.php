@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ExampleController extends Controller
 {
@@ -90,4 +92,54 @@ class ExampleController extends Controller
     {
         //
     }
+
+    /**
+     * Show the login form.
+     */
+
+    public function showLoginForm()
+    {
+        return view('authentication.login');
+    }
+
+    /**
+     * Handle a login request.
+     */
+    public function login(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->route('login.form')
+                             ->withErrors($validator)
+                             ->withInput();
+        }
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('products.index')->with('success', 'Login successful');
+        }
+
+        return redirect()->route('login.form')
+                         ->withErrors(['email' => 'The provided credentials do not match our records.']);
+    }
+
+    /**
+     * Log the user out.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.form')->with('success', 'Logged out successfully');
+    }
+
 }

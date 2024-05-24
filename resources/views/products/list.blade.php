@@ -15,7 +15,16 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-10 d-flex justify-content-end">
-                <a href="{{ route('products.create')}}" class="btn btn-dark">Create</a>
+                <a href="{{ route('products.create')}}" class="btn btn-dark m-3">Create</a>
+                <a href="/" class="btn btn-dark m-3">Home</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                
+                <a href="#" class="btn btn-dark m-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                
 
             </div>
             

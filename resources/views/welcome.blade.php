@@ -27,16 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('reg.create') }}">Registration</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login.form')}}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Product List</a>
+                            <a class="nav-link" href="{{ route('products.index') }}">Product List</a> --}}
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <h1>Hello Admin</h1>
         
     </body>
 </html>

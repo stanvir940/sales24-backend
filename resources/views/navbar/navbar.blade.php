@@ -11,7 +11,7 @@
                     <a class="nav-link" href="{{ route('registration') }}">Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" href="{{ route ('login.form')}}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products.index') }}">Product List</a>

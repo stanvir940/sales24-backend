@@ -24,3 +24,9 @@ Route::match(['GET','POST'],'/registration',[ExampleController::class,'store'])-
 
 Route::get('/api/products', [ProductShow::class, 'index']);
 Route::get('/api/product/{id}', [ProductShow::class, 'show']);
+
+
+// Routes for login
+Route::get('/login', [ExampleController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [ExampleController::class, 'login'])->name('login');
+Route::post('/logout', [ExampleController::class, 'logout'])->name('logout');

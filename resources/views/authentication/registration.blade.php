@@ -15,7 +15,9 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-10 d-flex justify-content-end">
-                <a href="{{ route('products.index')}}" class="btn btn-dark">Back</a>
+                {{-- <a href="{{ route('products.index')}}" class="btn btn-dark">Product Lists</a> --}}
+                <a href="/" class="btn btn-dark">Back</a>
+                
 
             </div>
             
@@ -25,6 +27,8 @@
                 <div class="card border-0 my-4 shadow-lg">
                     <div class="card-header">
                         <h3>Registration</h3>
+                        <h5>Or</h5>
+                        <a href="/login" class="btn btn-dark">Login</a>
 
                     </div>
                     <form action="{{ route('reg.store') }}" method="post">
