@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ExampleController extends Controller
 {
@@ -102,9 +104,8 @@ class ExampleController extends Controller
         return view('authentication.login');
     }
 
-    /**
-     * Handle a login request.
-     */
+    
+
     public function login(Request $request)
     {
         $rules = [
@@ -116,30 +117,42 @@ class ExampleController extends Controller
 
         if ($validator->fails()) {
             return redirect()->route('login.form')
-                             ->withErrors($validator)
-                             ->withInput();
+                            ->withErrors($validator)
+                            ->withInput();
         }
 
-        $credentials = $request->only('email', 'password');
+        $email = $request->input('email');
+        $password = $request->input('password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $user = DB::table('users')->where('email', $email)->first();
+
+        if ($user && password_verify($password, $user->password)) {
+            // Authentication successful
+            // You might want to store user information in session here
+            $request->session()->put('user', $user);
             return redirect()->route('products.index')->with('success', 'Login successful');
         }
 
+        // Authentication failed
         return redirect()->route('login.form')
-                         ->withErrors(['email' => 'The provided credentials do not match our records.']);
+                        ->withErrors(['email' => 'The provided credentials do not match our records.']);
     }
 
-    /**
-     * Log the user out.
-     */
     public function logout(Request $request)
     {
-        Auth::logout();
+        // Clear user session
+        Session::flush();
+
+        // Invalidate the session
         $request->session()->invalidate();
+
+        // Regenerate CSRF token
         $request->session()->regenerateToken();
+
+        // Redirect to the login form with success message
         return redirect()->route('login.form')->with('success', 'Logged out successfully');
     }
+
+
 
 }

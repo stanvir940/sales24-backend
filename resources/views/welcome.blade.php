@@ -37,7 +37,24 @@
                 </div>
             </div>
         </nav>
-        <h1>Hello Admin</h1>
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome Admin</h1>
+            <p class="lead">This is a simple and nice-looking landing page created with Bootstrap.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2>Section One</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat cum, reprehenderit labore recusandae quod quisquam, sunt, omnis unde quibusdam porro architecto aspernatur placeat beatae! Earum asperiores nemo distinctio necessitatibus ratione!</p>
+              </div>
+              <div class="col-md-6">
+                <h2>Section Two</h2>
+                <p>This is the content of section two. You can add any content or features here.</p>
+              </div>
+            </div>
+          </div>
         
     </body>
 </html>
